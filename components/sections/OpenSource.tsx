@@ -20,6 +20,7 @@ interface OpenSourceProject {
   title: string;
   description: string;
   image: string;
+  alt: string;
   stars: number;
   forks: number;
   repoUrl: string;
@@ -32,7 +33,8 @@ const projects: OpenSourceProject[] = [
     title: "MeetPoint",
     description:
       "A full-stack event management platform for planning, sharing, and managing events with secure login and role-based access.",
-    image: `/meetpoint.png`,
+    image: `/meet-point.png`,
+    alt: "MeetPoint",
     stars: 75,
     forks: 10,
     repoUrl: "",
@@ -52,7 +54,8 @@ const projects: OpenSourceProject[] = [
     title: "QUOTE+",
     description:
       "An internal sales optimization tool for enriching ERP-generated quotes with rich content, layout customization, and approval workflows.",
-    image: "/QUOTE+.png",
+    image: "/quote-plus.png",
+    alt: "QUOTE+",
     stars: 60,
     forks: 5,
     repoUrl: "",
@@ -72,7 +75,8 @@ const projects: OpenSourceProject[] = [
     title: "Pokémon Game App",
     description:
       "A full-stack Pokémon management app where users can catch, train, and battle Pokémon, including a mini-game to upgrade stats.",
-    image: "/Pokemon.png",
+    image: "/pokemons.png",
+    alt: "Pokemon",
     stars: 140,
     forks: 30,
     repoUrl: "https://github.com/Yazan/pokemon-game",
@@ -93,7 +97,8 @@ const projects: OpenSourceProject[] = [
     title: "Crypto Wallet App",
     description:
       "A mobile crypto wallet prototype with portfolio tracking, price charts, and real-time market updates.",
-    image: "/XHodl.jpg",
+    image: "/xhodl.jpg",
+    alt: "xHodl",
     stars: 95,
     forks: 18,
     repoUrl: "https://github.com/Yazan/crypto-wallet",
@@ -111,7 +116,8 @@ const projects: OpenSourceProject[] = [
     title: "AP.fit",
     description:
       "A fitness-focused web app offering resources for strength training, cardio, yoga, nutrition guidance, and a calorie calculator to support users on their fitness journey.",
-    image: "/AP.fit.png",
+    image: "/ap-fit.png",
+    alt: "Ap Fit",
     stars: 120,
     forks: 35,
     repoUrl: "https://github.com/user462138/AP.fit",
@@ -175,7 +181,7 @@ const OpenSource = () => {
                         <div className="relative h-[400px]">
                           <img
                             src={project.image}
-                            alt={project.title}
+                            alt={project.alt}
                             className="w-full h-full object-cover"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
