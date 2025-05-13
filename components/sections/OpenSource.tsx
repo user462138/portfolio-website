@@ -97,7 +97,7 @@ const projects: OpenSourceProject[] = [
     title: "Crypto Wallet App",
     description:
       "A mobile crypto wallet prototype with portfolio tracking, price charts, and real-time market updates.",
-    image: "/xhodl.jpg",
+    image: "/x-hodl.jpg",
     alt: "xHodl",
     stars: 95,
     forks: 18,
