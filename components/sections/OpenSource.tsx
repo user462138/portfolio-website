@@ -38,7 +38,7 @@ const projects: OpenSourceProject[] = [
     stars: 75,
     forks: 10,
     repoUrl: "",
-    demoUrl: "",
+    demoUrl: "https://app-stage-yazan-frontend-gqcteue8afhce7ed.westeurope-01.azurewebsites.net/",
     technologies: [
       ".NET 8",
       "Vue 3",
@@ -79,8 +79,8 @@ const projects: OpenSourceProject[] = [
     alt: "Pokemon",
     stars: 140,
     forks: 30,
-    repoUrl: "https://github.com/Yazan/pokemon-game",
-    demoUrl: "https://github.com/Yazan/pokemon-game",
+    repoUrl: "https://github.com/user462138/TYJ.game",
+    demoUrl: "https://tyj.onrender.com/",
     technologies: [
       "Node.js",
       "Express",
@@ -101,7 +101,7 @@ const projects: OpenSourceProject[] = [
     alt: "xHodl",
     stars: 95,
     forks: 18,
-    repoUrl: "https://github.com/Yazan/crypto-wallet",
+    repoUrl: "https://github.com/user462138/xHODL",
     demoUrl: "",
     technologies: [
       "React Native",
@@ -121,7 +121,7 @@ const projects: OpenSourceProject[] = [
     stars: 120,
     forks: 35,
     repoUrl: "https://github.com/user462138/AP.fit",
-    demoUrl: "",
+    demoUrl: "https://tyj-black.vercel.app/",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
 ];

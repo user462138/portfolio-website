@@ -45,8 +45,8 @@ const Projects = () => {
       description:
         "A full-stack event management platform for planning, sharing, and managing events with secure login and role-based access.",
       technologies: [".NET 8", "Vue 3", "Pinia", "Vue Router", "Azure B2C", "SQL Server", "Azure DevOps"],
-      demoUrl: "", // Add if hosted
-      repoUrl: "" // Add link if public
+      demoUrl: "https://app-stage-yazan-frontend-gqcteue8afhce7ed.westeurope-01.azurewebsites.net/",
+      repoUrl: ""
     },
     {
       id: "quote-plus",
@@ -54,8 +54,8 @@ const Projects = () => {
       description:
         "An internal sales optimization tool for enriching ERP-generated quotes with rich content, layout customization, and approval workflows.",
       technologies: ["C#", ".NET", "Entity Framework", "TypeScript", "React", "SQL Server", "Azure AD"],
-      demoUrl: "", // You can add one if hosted
-      repoUrl: "" // Internal project, so likely private or not available
+      demoUrl: "", 
+      repoUrl: "" 
     },
     {
       id: "pokemon-app",
@@ -63,8 +63,8 @@ const Projects = () => {
       description:
         "A full-stack Pokémon management app where users can catch, train, and battle Pokémon, including a mini-game to upgrade stats.",
       technologies: ["Node.js", "Express", "MongoDB", "EJS", "TypeScript", "CSS", "Jest", "Selenium"],
-      demoUrl: "https://github.com/Yazan/pokemon-game", // Add if deployed
-      repoUrl: "https://github.com/Yazan/pokemon-game" // Replace with actual repo URL
+      demoUrl: "https://github.com/user462138/TYJ.game", 
+      repoUrl: "https://tyj.onrender.com/" 
     },
     {
       id: "crypto-wallet",
@@ -72,8 +72,8 @@ const Projects = () => {
       description:
         "A mobile crypto wallet prototype with portfolio tracking, price charts, and real-time market updates.",
       technologies: ["React Native", "React Native Paper", "Victory Native", "TypeScript", "Redux"],
-      demoUrl: "", // Add if available
-      repoUrl: "https://github.com/Yazan/crypto-wallet" // Replace with real repo
+      demoUrl: "",
+      repoUrl: "https://github.com/user462138/xHODL" 
     },
     {
       id: "ap-fit",
@@ -81,7 +81,7 @@ const Projects = () => {
       description:
         "A fitness-focused web app offering resources for strength training, cardio, yoga, nutrition guidance, and a calorie calculator to support users on their fitness journey.",
       technologies: ["HTML", "CSS", "JavaScript"],
-      demoUrl: "", // Can be added if hosted
+      demoUrl: "https://tyj-black.vercel.app/",
       repoUrl: "https://github.com/user462138/AP.fit"
     }  
   ];
