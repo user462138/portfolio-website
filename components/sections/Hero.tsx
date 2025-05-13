@@ -86,7 +86,7 @@ const Hero = () => {
               asChild
             >
               <motion.a
-                href="#contact"
+                href="mailto:yazandukhan@hotmail.com"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
