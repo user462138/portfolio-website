@@ -232,6 +232,114 @@ const PostDialog = ({ post, onClose }: { post: BlogPost | null; onClose: () => v
   );
 };
 
+const BlogPostTimelineItem = ({
+  post,
+  index,
+  onClick,
+}: {
+  post: BlogPost;
+  index: number;
+  onClick: () => void;
+}) => {
+  const postRef = useRef(null);
+  const isInView = useInView(postRef, { once: true, amount: 0.2 });
+
+  return (
+    <motion.div
+      key={post.id}
+      ref={postRef}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100, rotateY: index % 2 === 0 ? -10 : 10 }}
+      animate={
+        isInView
+          ? {
+              opacity: 1,
+              x: 0,
+              rotateY: 0,
+              transition: {
+                duration: 0.8,
+                delay: index * 0.2,
+                type: "spring",
+                stiffness: 100,
+              },
+            }
+          : {}
+      }
+      className={`flex flex-col ${
+        index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+      } gap-8 relative`}
+    >
+      <div className="flex-1">
+        <motion.div
+          whileHover={{
+            scale: 1.02,
+            rotateY: index % 2 === 0 ? 5 : -5,
+            transition: { duration: 0.3 },
+          }}
+        >
+          <Card
+            className="glass-effect border-none overflow-hidden cursor-pointer transform perspective-1000"
+            onClick={onClick}
+          >
+            <CardContent className="p-6 relative">
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-neon-blue/10 to-neon-purple/10"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+
+              <h3 className="text-xl font-heading font-bold mb-3 relative z-10">
+                {post.title}
+              </h3>
+
+              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4 relative z-10">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>{format(new Date(post.date), "MMM dd, yyyy")}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  <span>{post.time}</span>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground mb-4 relative z-10">
+                {post.excerpt}
+              </p>
+
+              <div className="flex flex-wrap gap-2 relative z-10">
+                {post.tags.map((tag, tagIndex) => (
+                  <motion.div
+                    key={tag}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: tagIndex * 0.1 }}
+                  >
+                    <Badge variant="secondary" className="bg-neon-blue/20">
+                      {tag}
+                    </Badge>
+                  </motion.div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+
+      <motion.div
+        className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-neon-blue z-10
+          ${index % 2 === 0 ? "md:-right-6" : "md:-left-6"} left-1/2 -translate-x-1/2 md:translate-x-0`}
+        initial={{ scale: 0 }}
+        animate={isInView ? { scale: 1 } : {}}
+        transition={{ delay: index * 0.2 + 0.5, type: "spring" }}
+        style={{
+          boxShadow: "0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue)",
+        }}
+      />
+    </motion.div>
+  );
+};
+
 export default function BlogPage() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -335,101 +443,14 @@ export default function BlogPage() {
           />
           
           <div className="space-y-12">
-            {filteredPosts.map((post, index) => {
-              const postRef = useRef(null);
-              const isInView = useInView(postRef, { once: true, amount: 0.2 });
-              
-              return (
-                <motion.div
-                  key={post.id}
-                  ref={postRef}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100, rotateY: index % 2 === 0 ? -10 : 10 }}
-                  animate={isInView ? { 
-                    opacity: 1, 
-                    x: 0, 
-                    rotateY: 0,
-                    transition: { 
-                      duration: 0.8, 
-                      delay: index * 0.2,
-                      type: "spring",
-                      stiffness: 100
-                    }
-                  } : {}}
-                  className={`flex flex-col ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  } gap-8 relative`}
-                >
-                  <div className="flex-1">
-                    <motion.div
-                      whileHover={{ 
-                        scale: 1.02,
-                        rotateY: index % 2 === 0 ? 5 : -5,
-                        transition: { duration: 0.3 }
-                      }}
-                    >
-                      <Card 
-                        className="glass-effect border-none overflow-hidden cursor-pointer transform perspective-1000"
-                        onClick={() => setSelectedPost(post)}
-                      >
-                        <CardContent className="p-6 relative">
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-neon-blue/10 to-neon-purple/10"
-                            initial={{ opacity: 0 }}
-                            whileHover={{ opacity: 1 }}
-                            transition={{ duration: 0.3 }}
-                          />
-                          
-                          <h3 className="text-xl font-heading font-bold mb-3 relative z-10">
-                            {post.title}
-                          </h3>
-                          
-                          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4 relative z-10">
-                            <div className="flex items-center gap-2">
-                              <Calendar className="w-4 h-4" />
-                              <span>{format(new Date(post.date), 'MMM dd, yyyy')}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Clock className="w-4 h-4" />
-                              <span>{post.time}</span>
-                            </div>
-                          </div>
-                          
-                          <p className="text-muted-foreground mb-4 relative z-10">
-                            {post.excerpt}
-                          </p>
-                          
-                          <div className="flex flex-wrap gap-2 relative z-10">
-                            {post.tags.map((tag, tagIndex) => (
-                              <motion.div
-                                key={tag}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: tagIndex * 0.1 }}
-                              >
-                                <Badge variant="secondary" className="bg-neon-blue/20">
-                                  {tag}
-                                </Badge>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  </div>
-                  
-                  <motion.div
-                    className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-neon-blue z-10
-                      ${index % 2 === 0 ? 'md:-right-6' : 'md:-left-6'} left-1/2 -translate-x-1/2 md:translate-x-0`}
-                    initial={{ scale: 0 }}
-                    animate={isInView ? { scale: 1 } : {}}
-                    transition={{ delay: index * 0.2 + 0.5, type: "spring" }}
-                    style={{
-                      boxShadow: "0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue)"
-                    }}
-                  />
-                </motion.div>
-              );
-            })}
+            {filteredPosts.map((post, index) => (
+              <BlogPostTimelineItem
+                key={post.id}
+                post={post}
+                index={index}
+                onClick={() => setSelectedPost(post)}
+              />
+            ))}
           </div>
         </div>
       </div>
