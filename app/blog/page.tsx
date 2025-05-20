@@ -213,7 +213,7 @@ const PostContent = ({ post }: { post: BlogPost | null }) => {
 
 const PostDialog = ({ post, onClose }: { post: BlogPost | null; onClose: () => void }) => {
   return (
-    <DialogContent className="max-w-3xl bg-card glass-effect">
+    <DialogContent className="max-w-4xl bg-card glass-effect">
       <DialogHeader>
         <DialogTitle className="text-2xl font-heading">
           {post?.title || 'Loading...'}
