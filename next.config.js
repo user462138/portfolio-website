@@ -30,11 +30,11 @@ const nextConfig = {
     
     return config;
   },
-  // Disable static optimization to prevent hydration mismatches
-  experimental: {
-    optimizeCss: false,
-    optimizePackageImports: false
-  }
+  // // Disable static optimization to prevent hydration mismatches
+  // experimental: {
+  //   optimizeCss: false,
+  //   optimizePackageImports: false
+  // }
 };
 
 module.exports = nextConfig;
