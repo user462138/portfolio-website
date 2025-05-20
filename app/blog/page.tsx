@@ -218,14 +218,7 @@ const PostDialog = ({ post, onClose }: { post: BlogPost | null; onClose: () => v
         <DialogTitle className="text-2xl font-heading">
           {post?.title || 'Loading...'}
         </DialogTitle>
-        <DialogClose asChild>
-          <Button
-            variant="ghost"
-            className="absolute right-4 top-4 rounded-full h-8 w-8 p-0"
-          >
-            <X className="h-4 w-4" />
-          </Button>
-        </DialogClose>
+
       </DialogHeader>
       <PostContent post={post} />
     </DialogContent>
