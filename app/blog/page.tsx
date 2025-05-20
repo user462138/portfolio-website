@@ -218,9 +218,10 @@ const PostDialog = ({ post, onClose }: { post: BlogPost | null; onClose: () => v
         <DialogTitle className="text-2xl font-heading">
           {post?.title || 'Loading...'}
         </DialogTitle>
-
       </DialogHeader>
-      <PostContent post={post} />
+      <div className="max-h-[75vh] overflow-y-auto pr-2">
+        <PostContent post={post} />
+      </div>
     </DialogContent>
   );
 };
