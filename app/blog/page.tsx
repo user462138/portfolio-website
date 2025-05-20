@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/dialog';
 import { Card, CardContent } from '@/components/ui/card';
 
-interface BlogPost {
+export interface BlogPost {
   id: string;
   title: string;
   excerpt: string;
